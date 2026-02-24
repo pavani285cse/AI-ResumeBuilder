@@ -5,6 +5,7 @@ import { ArrowLeftIcon,User,FileText,Briefcase,GraduationCap,FolderIcon,Sparkles
 import { Link, useParams } from 'react-router-dom'
 import ResumePreview from '../Components/ResumePreview'
 import TemplateSelector from '../Components/TemplateSelector'
+import ColorPicker from '../Components/ColorPicker'
 const Resumebuilder = () => {
   const {resumeId}= useParams()
   const [resumeData,setResumeData]=useState({
@@ -59,7 +60,8 @@ const Resumebuilder = () => {
                <div className='flex justify-between items-center mb-6 border-b border-gray-300 py-1'>
                   <div className="flex items-center gap-2">
                     <TemplateSelector  selectedTemplate={resumeData.template} onChange={(template)=>setResumeData(prev => ({...prev,template}))}/>
-                      
+                    <ColorPicker selectedColor={resumeData.accent_color} onChange={(color)=>setResumeData(prev=>({...prev, accent_color: color}))}/>
+
                   </div>
                   <div className='flex items-center'>
                     {activeSectionIndex!==0 && (<button onClick={()=>setActiveSectionIndex((prevIndex)=> Math.max(prevIndex-1,0))} className='flex items-center gap-1 p-3 rounded-lg text-sm  font-medium  text-gray-600 hover:bg-gray-50 transition-all' disabled={activeSectionIndex===0}><ChevronLeft className='size-4'/> Previous</button>)}
