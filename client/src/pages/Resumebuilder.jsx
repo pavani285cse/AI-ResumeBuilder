@@ -6,6 +6,7 @@ import { Link, useParams } from 'react-router-dom'
 import ResumePreview from '../Components/ResumePreview'
 import TemplateSelector from '../Components/TemplateSelector'
 import ColorPicker from '../Components/ColorPicker'
+import ProfessionalSummaryForm from '../Components/professionalsummaryform'
 const Resumebuilder = () => {
   const {resumeId}= useParams()
   const [resumeData,setResumeData]=useState({
@@ -76,7 +77,9 @@ const Resumebuilder = () => {
                 {activeSection.id ==='personal' && (
                   <PersonalInfoForm data={resumeData.personal_info} onChange={(data)=>setResumeData(prev=>({...prev,personal_info:data}))} removeBackground={removeBackground} setRemoveBackground={setRemoveBackground}/>
                 )}
-
+               {activeSection.id ==='summary' && (
+                <ProfessionalSummaryForm data={resumeData.professional_summary} onChange={(data)=>setResumeData(prev=>({...prev,professional_summary:data}))} setResumeData={setResumeData}/>
+               )}
                </div>
             </div>
           </div>
